@@ -1,4 +1,5 @@
 import { readdirSync } from 'fs'
+import path from 'path'
 import { FileSystemIconLoader } from '@iconify/utils/lib/loader/node-loaders'
 import {
   defineConfig,
@@ -13,7 +14,9 @@ import {
 export default defineConfig({
   theme: {
     colors: {
-      red: '#6B0000',
+      red: {
+        DEFAULT: '#6B0000',
+      },
     },
   },
   shortcuts: [
@@ -44,7 +47,7 @@ export default defineConfig({
     }),
   ],
   safelist: [
-    ...readdirSync('./assets/icons').map(i => `my:${i.split('.')[0]}`),
+    ...readdirSync(path.resolve(new URL('.', import.meta.url).pathname, './assets/icons')).map(i => `my:${i.split('.')[0]}`),
   ],
   // transformers: [
   //   transformerDirectives(),
