@@ -47,7 +47,7 @@ export default defineConfig({
     }),
   ],
   safelist: [
-    ...readdirSync(path.resolve(new URL('.', import.meta.url).pathname, './assets/icons')).map(i => `my:${i.split('.')[0]}`),
+    ...readdirSync(path.resolve(__dirname, './assets/icons')).map(i => `my:${i.split('.')[0]}`),
   ],
   // transformers: [
   //   transformerDirectives(),
